@@ -18,6 +18,12 @@ xpip install xontrib-cd
 # or: xpip install -U git+https://github.com/eugenesvk/xontrib-cd
 ```
 
+This xontrib will get loaded automatically for interactive sessions; to stop this, set
+
+```xonsh
+$XONTRIBS_AUTOLOAD_DISABLED = {"cd", }
+```
+
 ## Usage
 
 Use `cd` as usual, but without the fear of copying&pasting arbitrary paths (e.g. `.../space separated/` or `.../[bracketed]/`)
