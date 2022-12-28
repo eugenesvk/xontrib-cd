@@ -1,0 +1,20 @@
+# Changes here will be overwritten by Copier
+_commit: v0.1.0
+_src_path: gh:xonsh/xontrib-template
+email: null
+enable_autoloading: true
+enable_pre_commit_hooks: true
+full_name: Evgeny
+github_username: eugenesvk
+has_aliases: false
+has_events: true
+package_manager: poetry
+project_name: cd
+project_package_name: cd
+project_repo_name: xontrib-cd
+project_short_description: 'cd to any path without escaping in xonsh shell: cd ~/[te]
+    st'
+pure_py: true
+py_module_name: xontrib_cd
+version: 0.1.1
+

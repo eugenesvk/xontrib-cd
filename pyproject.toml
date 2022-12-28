@@ -1,0 +1,76 @@
+
+[tool.poetry]
+name = "xontrib-cd"
+version = "0.1.1"
+description = "cd to any path without escaping in xonsh shell: cd ~/[te] st"
+authors = ["Evgeny <None>"]
+
+license = "MIT"
+readme = "README.md"
+
+repository = "https://github.com/eugenesvk/xontrib-cd"
+keywords = ['xontrib', 'xonsh']
+classifiers = [
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Topic :: System :: Shells",
+    "Topic :: System :: System Shells",
+    "Topic :: Terminals",
+    "Programming Language :: Python :: 3",
+]
+    
+
+
+
+[tool.poetry.plugins."xonsh.xontribs"]
+"cd" = "xontrib_cd.main"
+
+
+
+[tool.poetry.urls]
+
+Homepage = "https://github.com/eugenesvk/xontrib-cd"
+Documentation = "https://github.com/eugenesvk/xontrib-cd/blob/master/README.md"
+Code = "https://github.com/eugenesvk/xontrib-cd"
+"Issue tracker" = "https://github.com/eugenesvk/xontrib-cd/issues"
+
+
+[tool.poetry.dependencies]
+python = ">=3.7"
+xonsh = ">=0.12.5"
+
+
+
+[tool.poetry.dev-dependencies]
+pytest = ">=7.0"
+
+
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.isort]
+profile = "black"
+
+[tool.black]
+include = '\.pyi?$'
+force-exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.pytest_cache
+  | \.tox
+  | \.vscode
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+  | disk-cache.sqlite3
+)/
+'''
