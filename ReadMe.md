@@ -29,7 +29,7 @@ Set the following environment variables in your profile to enable __extra option
   - `$XONTRIB_CD_ALTSYMLINKFLAG = True` to pass `-p`, `-f`, or `-s` flags (in addition to `-P`) to follow symlinks
   - `$XONTRIB_CD_ALTSYMLINKFUNC = True` to use `cdp`, `cdf`, or `cds` (in addition to `cd -P`) to follow symlinks
   - `$XONTRIB_CD_SYMLINKAlWAYSON = True` to make `cd` always follow symlinks (always pass `-P`)
-  - `$XONTRIB_CD_MULTICMD = True` to make `cd` also work in the last command in a multi-command line
+  - `$XONTRIB_CD_LASTCMD = True` to make `cd` also work when it's the last command in a multi-command line
 
 
 ## Use
@@ -49,6 +49,7 @@ Add a space before ` cd` to disable adding `!`
 
 - Xontrib autoload can't be disabled and prevents user configured environment vars from being read on time due to a [xonsh bug](https://github.com/xonsh/xonsh/issues/5020), so if you want to change the default configs via env vars, install the deauto branch `xpip install -U git+https://github.com/eugenesvk/xontrib-cd@deauto`
 - Multiple commands per line like `cd ~; echo 1` will fail since `cd` is replaced with `cd!`, and everything after `!` is treated as a single string argument, ignoring the `;` separators
+- But `echo 1; cd ~` will work with `$XONTRIB_CD_LASTCMD`
 
 ## Credits
 
