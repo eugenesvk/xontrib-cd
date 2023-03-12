@@ -1,16 +1,15 @@
 from builtins import __xonsh__  # XonshSession (${...} is '__xonsh__.env')
 envx = __xonsh__.env
 
-_alt_symlink_flag      = envx.get('XONTRIB_CD_ALTSYMLINKFLAG' , False)
-_symlink_always_follow = envx.get('XONTRIB_CD_SYMLINKAlWAYSON', False)
+_alt_symlink_flag     	= envx.get('XONTRIB_CD_ALTSYMLINKFLAG' 	, False)
+_symlink_always_follow	= envx.get('XONTRIB_CD_SYMLINKAlWAYSON'	, False)
 
 def listen_cmd_macro(        cmd, **kw):
+  alt_sym_flag = ['cd -p ','cd -f ','cd -s ']
   if cmd.startswith('cd -P '):
-    return 'cd -P! ' + cmd[6:]
+    return   'cd -P! ' + cmd[6:]
   elif (_alt_symlink_flag    and                 # alt flags for following symlinks
-  (cmd.startswith('cd -p ')  or
-   cmd.startswith('cd -f ')  or
-   cmd.startswith('cd -s ') )):
+    cmd[:6] in alt_sym_flag):
     return   'cd -P! ' + cmd[6:]
   elif\
   (cmd.startswith('cd '    ) and not
@@ -20,12 +19,11 @@ def listen_cmd_macro(        cmd, **kw):
     else:
       return 'cd! '    + cmd[3:]
   else:
-    return cmd
+    return               cmd
 
 def listen_cmd_macro_symlink(cmd, **kw):         # alt functions for following symlinks
-  if\
-  (cmd.startswith('cdp ')    or
-   cmd.startswith('cdf ')    or
-   cmd.startswith('cds ') ):
+  alt_sym_funcs = ['cdp ','cdf ','cds ']
+  if cmd[:4] in alt_sym_funcs:
+    return   'cd -P! ' + cmd[4:]
   else:
-    return cmd
+    return               cmd
