@@ -1,5 +1,7 @@
-from builtins import __xonsh__  # XonshSession (${...} is '__xonsh__.env')
-envx = __xonsh__.env
+from .helper        	import get_sep_pos, lead_space_count
+from xonsh.built_ins	import XSH
+
+envx      = XSH.env or {}
 
 _alt_symlink_flag     	= envx.get('XONTRIB_CD_ALTSYMLINKFLAG' 	, False)
 _symlink_always_follow	= envx.get('XONTRIB_CD_SYMLINKAlWAYSON'	, False)
