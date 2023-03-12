@@ -9,11 +9,9 @@ If you like the idea click ⭐ on the repo and stay tuned.
 </p>
 
 
-## Installation
+## Install
 
-To install use pip:
-
-```bash
+```xsh
 xpip install xontrib-cd
 # or: xpip install -U git+https://github.com/eugenesvk/xontrib-cd
 ```
@@ -24,22 +22,28 @@ This xontrib will get loaded automatically for interactive sessions; to stop thi
 $XONTRIBS_AUTOLOAD_DISABLED = {"cd", }
 ```
 
-## Usage
-
-Use `cd` as usual, but without the fear of copying&pasting arbitrary paths (e.g. `.../space separated/` or `.../[bracketed]/`)
-
-```bash
-xontrib load cd
-cd ~/[Path] With Spaces	# equivalent to 'cd! ~/[Path] With Spaces'
-cd C:/Program Files    	# equivalent to 'cd! C:/Program Files'
-cd -P ~/SymlinkTo      	# follow symlinks, equivalent to 'cd -P! ~/SymlinkTo'
-```
+## Configure
 
 Set the following environment variables in your profile to enable __extra options__ (disabled by default):
 
   - `$XONTRIB_CD_ALTSYMLINKFLAG = True` to pass `-p`, `-f`, or `-s` flags (in addition to `-P`) to follow symlinks
   - `$XONTRIB_CD_ALTSYMLINKFUNC = True` to use `cdp`, `cdf`, or `cds` (in addition to `cd -P`) to follow symlinks
   - `$XONTRIB_CD_SYMLINKAlWAYSON = True` to make `cd` always follow symlinks (always pass `-P`)
+  - `$XONTRIB_CD_MULTICMD = True` to make `cd` also work in the last command in a multi-command line
+
+
+## Use
+
+Use `cd` as usual, but without the fear of copying&pasting arbitrary paths (e.g. `.../space separated/` or `.../[bracketed]/`)
+
+```xsh
+xontrib load cd
+cd ~/[Path] With Spaces	# equivalent to 'cd! ~/[Path] With Spaces'
+cd C:/Program Files    	# equivalent to 'cd! C:/Program Files'
+cd -P ~/SymlinkTo      	# follow symlinks, equivalent to 'cd -P! ~/SymlinkTo'
+```
+
+Add a space before ` cd` to disable adding `!`
 
 ## Known issues
 
