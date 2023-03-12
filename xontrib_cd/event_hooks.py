@@ -2,7 +2,6 @@ from builtins import __xonsh__  # XonshSession (${...} is '__xonsh__.env')
 envx = __xonsh__.env
 
 _alt_symlink_flag      = envx.get('XONTRIB_CD_ALTSYMLINKFLAG' , False)
-_alt_symlink_func      = envx.get('XONTRIB_CD_ALTSYMLINKFUNC' , False)
 _symlink_always_follow = envx.get('XONTRIB_CD_SYMLINKAlWAYSON', False)
 
 def listen_cmd_macro(        cmd, **kw):
@@ -24,10 +23,9 @@ def listen_cmd_macro(        cmd, **kw):
     return cmd
 
 def listen_cmd_macro_symlink(cmd, **kw):         # alt functions for following symlinks
-  if (_alt_symlink_func      and                 # duplicate check to main
+  if\
   (cmd.startswith('cdp ')    or
    cmd.startswith('cdf ')    or
-   cmd.startswith('cds ') )):
-    return   'cd -P! ' + cmd[4:]
+   cmd.startswith('cds ') ):
   else:
     return cmd
