@@ -43,7 +43,8 @@ Set the following environment variables in your profile to enable __extra option
 
 ## Known issues
 
-To be discovered...
+- Xontrib autoload can't be disabled and prevents user configured environment vars from being read on time due to a [xonsh bug](https://github.com/xonsh/xonsh/issues/5020), so if you want to change the default configs via env vars, install the deauto branch `xpip install -U git+https://github.com/eugenesvk/xontrib-cd@deauto`
+- Multiple commands per line like `cd ~; echo 1` will fail since `cd` is replaced with `cd!`, and everything after `!` is treated as a single string argument, ignoring the `;` separators
 
 ## Credits
 
