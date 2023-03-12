@@ -5,6 +5,7 @@ envx      = XSH.env or {}
 
 _alt_symlink_flag     	= envx.get('XONTRIB_CD_ALTSYMLINKFLAG' 	, False)
 _symlink_always_follow	= envx.get('XONTRIB_CD_SYMLINKAlWAYSON'	, False)
+_last_cmd             	= envx.get('XONTRIB_CD_LASTCMD'        	, False)
 
 def _sub_cmd(                cmd):
   alt_sym_flag = ['cd -p ','cd -f ','cd -s ']
@@ -26,6 +27,17 @@ def listen_cmd_macro(        cmd, **kw):
   cmd_sub = _sub_cmd(cmd)
   if cmd_sub:      # check first command
     return               cmd_sub
+  elif _last_cmd:  # check last  command
+    if (sep_pos := get_sep_pos(cmd)):
+      last_cmd_i  	= sep_pos[-1]
+      pre_cmd     	= cmd[:last_cmd_i+1 ]
+      last_cmd    	= cmd[ last_cmd_i+1:]
+      lead_sp     	= ' ' * lead_space_count(last_cmd)
+      last_cmd_sub	= _sub_cmd(last_cmd.lstrip(' '))
+      if (len(lead_sp) < 2) and last_cmd_sub:
+        cmd_sub = pre_cmd + lead_sp + last_cmd_sub
+        return           cmd_sub
+    return               cmd
   else:
     return               cmd
 
@@ -41,5 +53,16 @@ def listen_cmd_macro_symlink(cmd, **kw):         # alt functions for following s
   cmd_sub = _sub_cmd_alt_sym(cmd)
   if cmd_sub:      # check first command
     return               cmd_sub
+  elif _last_cmd: # check last  command
+    if (sep_pos := get_sep_pos(cmd)):
+      last_cmd_i  	= sep_pos[-1]
+      pre_cmd     	= cmd[:last_cmd_i+1 ]
+      last_cmd    	= cmd[ last_cmd_i+1:]
+      lead_sp     	= ' ' * lead_space_count(last_cmd)
+      last_cmd_sub	= _sub_cmd_alt_sym(last_cmd.lstrip(' '))
+      if (len(lead_sp) < 2) and last_cmd_sub:
+        cmd_sub = pre_cmd + lead_sp + last_cmd_sub
+        return           cmd_sub
+    return               cmd
   else:
     return               cmd
