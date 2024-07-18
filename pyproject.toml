@@ -30,7 +30,7 @@ Code           	= "https://github.com/eugenesvk/xontrib-cd"
 
 [tool.poetry.dependencies]
 python	= ">=3.8"
-xonsh 	= ">=0.12.5"
+xonsh 	= ">=0.18.0"
 
 [tool.poetry.dev-dependencies]
 pytest = ">=7.0"
