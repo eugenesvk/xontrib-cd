@@ -1,7 +1,7 @@
 # Changelog
 All notable changes to this project will be documented in this file
 
-[unreleased]: https://github.com/eugenesvk/xontrib-cd/compare/0.3.0...HEAD
+[unreleased]: https://github.com/eugenesvk/xontrib-cd/compare/0.3.1...HEAD
 ## [Unreleased]
 <!-- - __Added__ -->
   <!-- + :sparkles:  -->
