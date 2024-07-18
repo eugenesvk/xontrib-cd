@@ -1,4 +1,4 @@
-from xonsh.lexer	import get_tokens
+from xonsh.parsers.lexer  import get_tokens
 
 def get_sep_pos(text):
   if text.strip():
