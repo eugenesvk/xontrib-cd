@@ -34,7 +34,9 @@ jobs:
 #    # Steps represent a sequence of tasks that will be executed as part of the job
 #    steps:
 #      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-#      - uses: actions/checkout@v2
+#     - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 #v4.2.2
+#       with:
+#         persist-credentials: false
 #
 #      - name: generate change log
 #        uses: heinrichreimer/github-changelog-generator-action@v2.1.1
